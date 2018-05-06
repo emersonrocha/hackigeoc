@@ -9,9 +9,11 @@ $(function(){
 
     $('#div-login div a').click(function(){
         $('#div-user').removeClass("hidden");
+        $('#div-login').removeClass("visible");
         $('#div-login').addClass("hidden");
         $('#div-user').addClass("visible");
         // var id = $(this).attr('id');
         // alert(id);
     });
+
 });

@@ -19,6 +19,7 @@ div {
 }
 
 .chat-column {
+    color: #fff;
     height: 100%;
     padding: 0.9375rem 0 0.625rem 0;
     margin: auto;
@@ -31,7 +32,7 @@ div {
     margin: 0.75rem;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 80vh;
+    /* height: 80vh; */
 }
 
 .message-inner {
@@ -92,7 +93,7 @@ div {
     position: relative;
     border-radius: 1.5625rem;
     font-size: 1rem;
-    color: #323232;
+    /* color: #323232; */
     letter-spacing: 0.015rem;
     line-height: 1.3125rem;
 }

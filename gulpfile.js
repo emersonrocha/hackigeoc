@@ -62,6 +62,13 @@ gulp.task('vendor', function() {
     ])
     .pipe(gulp.dest( pasta +  '/scrollreveal'))
 
+  // Angular e extras
+  gulp.src([
+    './node_modules/angular/angular.min.js'
+  ])
+  .pipe(gulp.dest( pasta + '/angular'))
+  
+
 });
 
 // Compile SCSS

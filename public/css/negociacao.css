@@ -2,13 +2,24 @@
 .hidden{
     visibility: hidden;
     opacity: 0;
-    /* display: none; */
+    display: none;
     transition: opacity 2s, display 2s, visibility 3s;
 }
 
 .visible{
     visibility: visible;
     opacity: 1;
-    /* display: flex; */
+    display: flex;
     transition: opacity 2s, display 2s, visibility 3s;
+}
+
+.login-input {
+    padding: 15px 25px;
+    border-radius: 10px;
+}
+
+.login-input input{
+    border-radius: 11px;
+    border: 1px;
+    padding: 2px;
 }
