@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="styles/kendo.default.mobile.min.css" />
+
+    <script src="js/kendo.all.min.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+        rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <link href="css/negociacao.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/#page-top">Geração H</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/#services">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/#portfolio">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/#contact">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead text-center text-white d-flex" style="height: 100%;">
+        <div id="example">
+            <div class="demo-section k-content wide">
+                <div id="chart"></div>
+            </div>
+            <script>
+                var stats = [
+                    { value: null, date: new Date("08;00") },
+                    { value: null, date: new Date("09:00") },
+                    { value: null, date: new Date("10:00") },
+                    { value: null, date: new Date("11:00") },
+                    { value: null, date: new Date("12:00") },
+                    { value: null, date: new Date("13:00") },
+                    { value: null, date: new Date("14:00") },
+                    { value: null, date: new Date("15:00") },
+                    { value: null, date: new Date("16:00") },
+                    { value: null, date: new Date("17:00") },
+                    { value: null, date: new Date("18:00") },
+                    { value: null, date: new Date("19:00") },
+                    { value: null, date: new Date("20:00") }
+                ];
+
+                function createChart() {
+                    $("#chart").kendoChart({
+                        transitions: false,
+                        title: {
+                            text: "Acordos em tempo real"
+                        },
+                        dataSource: {
+                            data: stats
+                        },
+                        series: [{
+                            type: "line",
+                            name: "Acordo",
+                            field: "value",
+                        }],
+                        valueAxis: {
+                            labels: true,
+                            line: {
+                                visible: false
+                            },
+                            axisCrossingValue: -10
+                        },
+                        valueAxis: {
+                            max: 45
+                        },
+                        categoryAxis: {
+                            labels: { rotation: 0 },
+                            categories: ["00:00", "00:15", "00:30", "00:45", "01:00", "01:15", "01:30", "01:45", "02:00", "02:15", "02:30", "02:45", "03:00"]
+                        },
+                        tooltip: {
+                            visible: true,
+                            format: "{0}%",
+                            template: "#= series.name #: #= value #"
+                        }
+                    });
+                }
+
+                $(document).ready(createChart);
+                $("#example").bind("kendo:skinChange", createChart);
+                $(".box").bind("change", refresh);
+
+                function refresh() {
+                    var chart = $("#chart").data("kendoChart"),
+                        series = chart.options.series,
+                        categoryAxis = chart.options.categoryAxis;
+                    chart.refresh();
+                }
+
+                var indice = 0;
+                var intervalo = setInterval(function () {
+                    var pesos = [2, 3, 5, 8, 13, 17, 21, 25, 27, 31, 33, 36, 40];
+                    var valor = pesos[indice];
+                    $("#chart").data('kendoChart').options.series[0].data[indice].value = valor;
+
+                    indice++;
+                    if (indice == 13) clearInterval(intervalo);
+
+                    $("#chart").data('kendoChart').refresh();
+                }, 15000);
+            </script>
+        </div>
+    </header>
+
+</body>
+
+</html>
