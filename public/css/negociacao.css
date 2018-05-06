@@ -23,3 +23,31 @@
     border: 1px;
     padding: 2px;
 }
+
+#div-historico{
+    flex: 1;
+    opacity: 0.8;
+    background-color: aliceblue;
+}
+
+#div-chat{
+    flex: 1;
+    overflow: auto;
+}
+
+#div-user{   
+    position: relative;    
+}
+
+.title-block{
+    position: absolute;
+    top: -20px;
+    right: 0px;
+}
+
+.title-block-left{
+    position: absolute;
+    top: -20px;
+    left: 0px;
+}
+
