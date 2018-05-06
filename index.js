@@ -2,7 +2,7 @@ const watson = require('watson-developer-cloud');
 const express = require('express');
 
 const app = express();
-const port = 8080;
+const PORT = process.env.PORT || 5000
 
 app.use(express.static('./public'));
 
@@ -32,4 +32,4 @@ app.get('/conversation/:text*?', (req, res) => {
     res.json(response);
   });
 });
-app.listen(port, () => console.log(`Running on port ${port}`));
+app.listen(PORT, () => console.log(`Running on port ${PORT}`));
